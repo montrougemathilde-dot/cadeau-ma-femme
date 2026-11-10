@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ma femme chinoise ♡</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Quicksand:wght@400;500;600;700&display=swap');
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:linear-gradient(135deg,#fff8fb,#ffe1ed,#ffd2e2);color:#7a4057;font-family:Quicksand,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:radial-gradient(#fff 1.2px,transparent 1.2px);background-size:26px 26px;opacity:.55}
+.screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:25px}
+.card{text-align:center;max-width:720px;width:100%;position:relative}
+.badge{display:inline-block;background:#fff;padding:10px 20px;border-radius:30px;font-size:13px;box-shadow:0 8px 25px #c86b8b25}
+h1{font-family:"DM Serif Display",serif;font-size:clamp(52px,10vw,95px);line-height:.92;color:#d45d82;margin:22px 0 18px;text-shadow:3px 4px 0 #fff}
+.subtitle{font-size:17px;line-height:1.8;max-width:520px;margin:0 auto 30px}
+button{font:700 14px Quicksand;border:0;border-radius:999px;padding:15px 30px;cursor:pointer;transition:.25s}
+.yes{background:#e56b91;color:#fff;box-shadow:0 12px 30px #c54f752d}
+.yes:hover{transform:translateY(-3px) scale(1.04)}
+.no{background:#fff;color:#b25372;margin-left:8px;box-shadow:0 8px 22px #c54f7520;position:relative}
+.hidden{display:none!important}
+.float{position:fixed;animation:float 7s linear infinite;opacity:.5;pointer-events:none}
+@keyframes float{from{transform:translateY(110vh) rotate(0)}to{transform:translateY(-10vh) rotate(360deg)}}
+
+/* enveloppe */
+.envelope-page{background:linear-gradient(135deg,#fff7fa,#ffdbe8)}
+.envelope-wrap{text-align:center}
+.envelope{width:min(500px,86vw);height:300px;position:relative;margin:30px auto;cursor:pointer;filter:drop-shadow(0 22px 30px #a64c6d28);perspective:900px}
+.env-body{position:absolute;inset:0;background:#ee91ae;border-radius:18px;overflow:hidden}
+.env-body:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 49%,#dc7898 50%,transparent 51%),linear-gradient(225deg,transparent 49%,#dc7898 50%,transparent 51%);opacity:.55}
+.flap{position:absolute;z-index:4;top:0;left:0;width:100%;height:60%;background:#f5a9c0;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform 1s ease;backface-visibility:hidden}
+.letter{position:absolute;z-index:2;left:8%;top:10%;width:84%;height:82%;background:#fffdfb;border-radius:12px;padding:25px;display:flex;align-items:center;justify-content:center;font-family:"DM Serif Display";font-size:26px;color:#c55579;box-shadow:0 5px 20px #73334d18;transition:1s}
+.envelope.open .flap{transform:rotateX(180deg);z-index:1}
+.envelope.open .letter{transform:translateY(-62%);z-index:5}
+.hint{font-size:14px;opacity:.7}
+
+/* lettre */
+#letterPage{background:linear-gradient(135deg,#fff8fb,#ffd9e7)}
+.letter-card{max-width:780px;width:100%;background:#fffdfb;border:3px solid #f4bfd0;border-radius:28px;padding:45px;box-shadow:0 25px 70px #a64c6d20;position:relative}
+.letter-card:before,.letter-card:after{position:absolute;color:#f0a0ba;font-size:55px}
+.letter-card:before{content:"♡";top:10px;right:22px}
+.letter-card:after{content:"♡";bottom:5px;left:20px;font-size:40px}
+.letter-card h2{font-family:"DM Serif Display";text-align:center;color:#d45d82;font-size:48px;margin:0 0 25px}
+.message{font-family:"DM Serif Display";font-size:22px;line-height:1.8;text-align:center;color:#744256;white-space:pre-line}
+.photos{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:32px}
+.photos img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:18px;border:5px solid #fff;box-shadow:0 8px 22px #8e3e5b18}
+.end{text-align:center;font-family:"DM Serif Display";font-size:25px;color:#d45d82;margin-top:30px}
+@media(max-width:600px){.letter-card{padding:30px 20px}.letter-card h2{font-size:40px}.message{font-size:21px}.envelope{height:240px}}
+</style>
+</head>
+<body>
+
+<section id="home" class="screen">
+ <div class="card">
+  <div class="badge">💗 un petit cadeau rien que pour toi 💗</div>
+  <h1>Ma femme<br>chinoise ♡</h1>
+  <p class="subtitle">J'ai préparé quelque chose spécialement pour toi...<br>Tu veux découvrir ton petit cadeau ? 🥹💕</p>
+  <button class="yes" onclick="showEnvelope()">OUI 💗</button>
+  <button class="no" id="noBtn">NON 🙈</button>
+ </div>
+</section>
+
+<section id="envelopePage" class="screen envelope-page hidden">
+ <div class="envelope-wrap">
+  <div class="badge">💌 une lettre pour ma femme chinoise</div>
+  <div class="envelope" id="envelope" onclick="openEnvelope()">
+   <div class="env-body"></div>
+   <div class="letter">Pour ma femme chinoise ♡</div>
+   <div class="flap"></div>
+  </div>
+  <div class="hint" id="hint">Clique sur l'enveloppe 💗</div>
+ </div>
+</section>
+
+<section id="letterPage" class="screen hidden">
+ <div class="letter-card">
+  <h2>Ma femme chinoise ♡</h2>
+  <div class="message">Ma femme chinoise,
+
+Je voulais te préparer quelque chose rien que pour toi, parce que tu mérites vraiment qu’on te rappelle à quel point tu es importante pour moi. ❤️
+
+Je ne sais même pas par où commencer tellement on a déjà partagé de choses ensemble. Il y a tous nos fous rires pour des trucs complètement débiles, nos discussions qui peuvent durer beaucoup trop longtemps, nos moments où on ne fait rien mais où on passe quand même un bon moment, et tous ces souvenirs que je garderai toujours avec moi.
+
+Merci d’être là, tout simplement. Merci pour ta présence, pour ta façon d’être, pour les moments où tu me fais rire et même pour les moments où tu me supportes alors que je suis insupportable mdrrr. Je suis vraiment heureuse de t’avoir dans ma vie et je ne voudrais échanger notre amitié pour rien au monde.
+
+J’espère qu’on aura encore énormément de souvenirs à créer ensemble, encore plein de photos, de sorties, de conversations, de délires et de moments dont on reparlera des années après en se demandant comment on a pu être aussi bêtes. 😭
+
+Je veux surtout que tu profites de ta journée, que tu sois entourée de personnes qui t’aiment et que tu te rappelles que tu comptes énormément pour moi. Même si je ne le dis pas toujours, je tiens énormément à toi et je suis vraiment reconnaissante de t’avoir comme meilleure amie.
+
+Alors voilà, ce petit site est juste une petite façon de te dire merci pour tout. Merci pour notre amitié, pour tous nos souvenirs et pour tous ceux qui restent encore à créer.
+
+Je t’aime très fort ma femme chinoise. ❤️
+
+Joyeux anniversaire à toi, et surtout ne change jamais. ♡</div>
+
+  
+  <div class="end">Joyeux anniversaire ma femme chinoise ❤️</div>
+ </div>
+</section>
+
+<script>
+function showEnvelope(){
+ document.getElementById('home').classList.add('hidden');
+ document.getElementById('envelopePage').classList.remove('hidden');
+}
+function openEnvelope(){
+ document.getElementById('envelope').classList.add('open');
+ document.getElementById('hint').textContent='♡';
+ setTimeout(()=>{
+  document.getElementById('envelopePage').classList.add('hidden');
+  document.getElementById('letterPage').classList.remove('hidden');
+  window.scrollTo(0,0);
+ },1500);
+}
+const no=document.getElementById('noBtn');
+no.addEventListener('mouseenter',()=>{
+ no.style.transform=`translate(${Math.random()*180-90}px,${Math.random()*120-60}px)`;
+});
+for(let i=0;i<16;i++){
+ const e=document.createElement('div'); e.className='float';
+ e.textContent=['♡','♥','✦','🌸'][i%4];
+ e.style.left=Math.random()*100+'vw';
+ e.style.animationDelay=Math.random()*6+'s';
+ e.style.fontSize=(13+Math.random()*22)+'px';
+ document.body.appendChild(e);
+}
+</script>
+</body>
+</html>
